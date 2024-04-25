@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <style>
+        .card-content{
+            background-color: rgb(235, 235, 235);
+        }
+        p{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.13rem;
+        }
+        .card-title{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.1rem;
+        }
+    </style>
+
+    <form enctype="multipart/form-data">{% csrf_token %}
+        <div class="container">
+            <h1>Lista de productos a Modificar</h1>
+            <!-- Itera sobre cada pan y renderízalo dentro de un div de Materialize CSS -->
+            {% for pan in panes %}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title" >{{ pan.nombre }}</span>                        
+                        <p>Precio: ${{ pan.precio }} <br>
+                            Sabor: {{pan.sabor}}<br>
+                            Disponibilidad: {% if pan.disponibilidad %}Disponible{% else %}Agotado{% endif %}
+                        </p>
+                        <div class="right-align">
+                            <!-- Ajusta la URL 'nombre_de_la_vista' a la vista de modificación -->
+                            <a href="{% url 'modificar_pan' pan.id %}" class="btn waves-effect waves-light">Modificar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

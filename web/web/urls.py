@@ -20,11 +20,12 @@ from app1.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('asd',landing, name="landing"),
+    path('',landing, name="landing"),
     path('post_agregar/',post_agregar, name="post_agregar"),
     path('modificar/', modificar, name='modificar'),
     path('modificar/modificar_pan/<int:pk>/', modificar_pan, name='modificar_pan'),    
     path('api-auth/', include('rest_framework.urls')),
-    path('', include(('tasks.urls', 'tasks'), namespace = 'tasks')),
-    path('meseros', include(('meseros.urls', 'meseros'), namespace = 'meseros'))
+    #path('', include(('tasks.urls', 'tasks'), namespace = 'tasks')),
+    #path('meseros', include(('meseros.urls', 'meseros'), namespace = 'meseros')),
+    path('calculadora/', calc, name='calculadora')
 ]

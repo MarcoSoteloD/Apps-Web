@@ -55,6 +55,8 @@ def modificar_pan(request, pk):
     
     # Renderiza el template 'modificar_pan.html' con el formulario.
     return render(request, 'modificar_pan.html', {'form': form})
-
-
 #--------------------------------------------------------------------------------
+
+
+def calc(request):
+    return render(request,'calculadora.html')

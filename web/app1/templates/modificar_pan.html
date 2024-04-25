@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Sección de contenido específica de esta plantilla -->
+
+<div class="container">
+    <!-- Encabezado de nivel 2 para indicar que se está editando un producto -->
+    <h2>Editar Producto</h2>
+    
+    <!-- Formulario para editar el producto -->
+    <form method="POST">
+        <!-- Agrega un token CSRF para proteger el formulario contra ataques CSRF -->
+        {% csrf_token %}
+        
+        <!-- Renderiza el formulario 'form' como un conjunto de elementos de párrafo -->
+        {{ form.as_p }}
+        
+        <!-- Botón para enviar el formulario -->
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>
+{% endblock %}
